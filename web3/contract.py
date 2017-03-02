@@ -768,7 +768,7 @@ def call_contract_function(contract,
     except DecodingError as e:
         # Provide a more helpful error message than the one provided by
         # eth-abi-utils
-        if (return_data == "0x" or return_data == "") and (eth_getCode(contract.address) == true):
+        if (return_data == "0x" or return_data == "") and (contract.web3.eth.getCode(contract.address) == "0x"):
             msg = ("Could not transact with/call contract function, is contract deployed correctly and chain synced?")
         else:
             msg = (
